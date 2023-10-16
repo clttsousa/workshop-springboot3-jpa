@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.cleitonsousa.workshop.entities.Category;
 import com.cleitonsousa.workshop.entities.Order;
+import com.cleitonsousa.workshop.entities.Product;
 import com.cleitonsousa.workshop.entities.User;
 import com.cleitonsousa.workshop.entities.enuns.OrderStatus;
 import com.cleitonsousa.workshop.repositories.CategoryRepository;
 import com.cleitonsousa.workshop.repositories.OrderRepository;
+import com.cleitonsousa.workshop.repositories.ProductRepository;
 import com.cleitonsousa.workshop.repositories.UserRepository;
 
 @Configuration
@@ -28,6 +30,9 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
+	
+	@Autowired
+	private ProductRepository productRepository;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -49,9 +54,29 @@ public class TestConfig implements CommandLineRunner {
 		Order o4 = new Order(null, Instant.parse("2022-02-22T15:21:22Z"), OrderStatus.WAITING_PAYMENT, u4);
 		Order o5 = new Order(null, Instant.parse("2023-09-20T15:21:22Z"), OrderStatus.CANCELED, u3);
 		
+		Product p1 = new Product(null, "The Lord of the Rings", "Uma saga épica na Terra Média:"
+				+ " o bem luta contra o mal. Frodo lidera para destruir um anel maligno. "
+				+ "Aventura inesquecível de Tolkien.", 90.5, "");
+		
+		Product p2 = new Product(null, "Smart TV", "Uma Smart TV impressionante de 55 polegadas, 4K, "
+				+ "com streaming suave e aplicativos. "
+				+ "Entretenimento em casa no seu melhor.", 2190.0, "");
+		
+		Product p3 = new Product(null, "Macbook Pro", "O MacBook Pro: uma obra-prima de design e desempenho."
+				+ " Tela retina brilhante, poder de processamento incrível "
+				+ "e portabilidade excepcional.", 1250.0, "");
+		
+		Product p4 = new Product(null, "PC Gamer", "PC Gamer de alto desempenho: potência bruta e gráficos incríveis."
+				+ " Domine os jogos mais exigentes com este monstro de velocidade.", 6200.0, "");
+		
+		Product p5 = new Product(null, "Rails for Dummies", "Um guia Rails para iniciantes. "
+				+ "Aprenda a criar aplicativos da web com facilidade."
+				+ " Orientações práticas para dominar o desenvolvimento web.", 100.99, ""); 
+		
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4));
 		userRepository.saveAll(Arrays.asList(u1, u2, u3, u4));
-		orderRepository.saveAll(Arrays.asList(o1,o2,o3,o4,o5));
+		orderRepository.saveAll(Arrays.asList(o1, o2, o3, o4, o5));
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 	}
 
 }
