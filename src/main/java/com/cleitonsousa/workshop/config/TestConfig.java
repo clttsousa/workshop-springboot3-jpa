@@ -54,8 +54,8 @@ public class TestConfig implements CommandLineRunner {
 		User u2 = new User(null, "Alex Green", "alex@gmail.com", "977777777", "123456");
 		User u3 = new User(null, "Cleiton Sousa", "cleiton@gmail.com", "999117145", "123456");
 		User u4 = new User(null, "Amanda Estevam", "amanda@gmail.com", "912345115", "123456");
-		
-		userRepository.saveAll(Arrays.asList(u1, u2, u3, u4));
+		User u5 = new User(null, "Teste", "teste@gmail.com", "912345115", "123456");
+		userRepository.saveAll(Arrays.asList(u1, u2, u3, u4, u5));
 		
 		Order o1 = new Order(null, Instant.parse("2023-06-20T19:53:07Z"), OrderStatus.PAID, u1);
 		Order o2 = new Order(null, Instant.parse("2023-07-21T03:42:10Z"), OrderStatus.SHIPPED, u2);
